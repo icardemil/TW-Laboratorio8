@@ -12,12 +12,12 @@ if($temp != null){
     else{
         if($temp->rol == 'user')
         {
-            echo '<h1><p class="bg-warning">Bienvenido esclavo</p></h1>';
+            echo '<h1><p class="bg-warning">Bienvenido usuario</p></h1>';
         }
     }
 }
 else{
-    echo '<h1><p class="bg-danger">Logeate wey</p></h1>';
+    echo '<h1><p class="bg-danger">Ingrese al sitio presionando LOGIN</p></h1>';
 }
 ?>
 <div class="site-index">

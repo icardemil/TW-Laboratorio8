@@ -28,7 +28,7 @@ class DirectorController extends Controller
             ],
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['create', 'update','delete'],
+                'only' => ['index','create', 'update','delete'],
                 'rules' => [
                     // deny all POST requests
                     [

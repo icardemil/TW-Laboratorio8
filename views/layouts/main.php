@@ -64,7 +64,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-        <img src="https://media1.tenor.com/images/6016e1b0a3c9da4a1ff3f55b0ca2984c/tenor.gif">
+        <p>Laboratorio 08 Yii. Iván Cardemil - Kevin Marca</p>
     </div>
 </div>
 

@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->idDirector;
 $this->params['breadcrumbs'][] = ['label' => 'Directors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$cant_movies = count($model->peliculas);
 ?>
 <div class="director-view">
 
@@ -23,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Películas',['/pelicula/index','idp' => $model->idDirector],['class' => 'btn btn-success'])?>
     </p>
 
     <?= DetailView::widget([
@@ -34,10 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'pais',
             'edad',
             'productora',
+            [   'label' => "Cantidad de películas",
+                'value' => $cant_movies
+            ],
         ],
     ]) ?>
     <?php
-        $cant_movies = count($model->peliculas);
         echo 'Películas del director
                 <table class="table">
                     <thead>

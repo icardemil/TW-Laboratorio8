@@ -26,6 +26,23 @@ class PeliculaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['index','create', 'update','delete'],
+                'rules' => [
+                    // deny all POST requests
+                    [
+                        'allow' => true,
+                        'verbs' => ['POST']
+                    ],
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    // everything else is denied
+                ],
+            ],
         ];
     }
 
@@ -33,9 +50,12 @@ class PeliculaController extends Controller
      * Lists all Pelicula models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex($Director_idDirector=null)
+    {   $temp = Yii::$app->getRequest()->getQueryParam('idp');
         $searchModel = new PeliculaSearch();
+        if($Director_idDirector==null){
+			$searchModel->Director_idDirector = $temp;
+		}
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +63,6 @@ class PeliculaController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single Pelicula model.
      * @param integer $idPelicula
@@ -63,10 +82,10 @@ class PeliculaController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate($temp=null)
+    {   
         $model = new Pelicula();
-
+        $model-> Director_idDirector = $temp;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'idPelicula' => $model->idPelicula, 'Director_idDirector' => $model->Director_idDirector]);
         }

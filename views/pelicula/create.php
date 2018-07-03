@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+$temp = yii::$app->getRequest()->getQueryParam('idp');
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pelicula */

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+$temp = Yii::$app->getRequest()->getQueryParam('idp');
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PeliculaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pelicula', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pelicula', ['create', 'temp' => $temp], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
